@@ -1,0 +1,26 @@
+#!/bin/sh
+
+indent() {
+  sed -u 's/^/       /'
+}
+
+echo "-----> Install rclone"
+BUILD_DIR=$1
+VENDOR_DIR="vendor"
+DOWNLOAD_URL="https://downloads.rclone.org/rclone-v1.39-linux-amd64.zip"
+
+echo "DOWNLOAD_URL = " $DOWNLOAD_URL | indent
+
+cd $BUILD_DIR
+mkdir -p $VENDOR_DIR
+cd $VENDOR_DIR
+mkdir -p rclone
+cd rclone
+wget $DOWNLOAD_URL -O rclone.zip
+unzip -j rclone.zip
+
+
+echo "exporting PATH" | indent
+# PROFILE_PATH="$BUILD_DIR/.profile.d/ffmpeg.sh"
+# mkdir -p $(dirname $PROFILE_PATH)
+echo 'export PATH="$PATH:${HOME}/vendor/rclone"' >> $PROFILE_PATH
