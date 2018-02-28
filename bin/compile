@@ -21,6 +21,6 @@ unzip -j rclone.zip
 
 
 echo "exporting PATH" | indent
-# PROFILE_PATH="$BUILD_DIR/.profile.d/ffmpeg.sh"
-# mkdir -p $(dirname $PROFILE_PATH)
+PROFILE_PATH="$BUILD_DIR/.profile.d/rclone.sh"
+mkdir -p $(dirname $PROFILE_PATH)
 echo 'export PATH="$PATH:${HOME}/vendor/rclone"' >> $PROFILE_PATH
